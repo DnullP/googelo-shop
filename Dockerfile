@@ -1,13 +1,9 @@
-# 第一阶段：构建阶段
-FROM golang:1.20-alpine AS builder
+FROM golang:1.23.1 AS builder
 
-# 设置环境变量，确保 Go 使用模块
 ENV GO111MODULE=on
 
-# 安装必要的依赖
 RUN apk update && apk add --no-cache git
 
-# 创建工作目录
 WORKDIR /app
 
 # 复制 go.mod 和 go.sum 并下载依赖
