@@ -27,6 +27,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: set lower case owner name
+        run: |
+          echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
+        env:
+          OWNER: '${{ github.repository }}'
+
       # 步骤 4：构建并推送 Docker 镜像
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
@@ -35,8 +41,8 @@ jobs:
           file: Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:${{ github.run_number }}
-            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/OWNER_LC:${{ github.run_number }}
+            ghcr.io/OWNER_LC:latest
 
       # 可选步骤：通知成功（例如发送 Slack 消息）
       # - name: Notify success
