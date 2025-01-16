@@ -41,8 +41,8 @@ jobs:
           file: Dockerfile
           push: true
           tags: |
-            ghcr.io/OWNER_LC:${{ github.run_number }}
-            ghcr.io/OWNER_LC:latest
+            ghcr.io/$OWNER_LC:${{ github.run_number }}
+            ghcr.io/$OWNER_LC:latest
 
       # 可选步骤：通知成功（例如发送 Slack 消息）
       # - name: Notify success
