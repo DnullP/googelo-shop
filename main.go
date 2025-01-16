@@ -13,7 +13,7 @@ func main() {
 	// 定义一个 GET 请求的路由
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"message": "Hello, World!",
+			"message": "Hello, youuuuuuuu!",
 		})
 	})
 
